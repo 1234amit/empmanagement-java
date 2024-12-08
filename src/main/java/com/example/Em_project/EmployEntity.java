@@ -1,5 +1,6 @@
 package com.example.Em_project;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,11 +15,18 @@ import lombok.Data;
 public class EmployEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;  
+    private Long id;
+
+    // @Version // Hibernate will manage a version column to handle concurrent modifications
+    // private int version;
+
+    @Column(nullable = false)  
     private String name;
+    @Column(nullable = false)
     private String email;
+    @Column(nullable = false)
     private String phone;
 
-    @Version
-    private int version;
+    // @Version
+    // private Long version;
 }
